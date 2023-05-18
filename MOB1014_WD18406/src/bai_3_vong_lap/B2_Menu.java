@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class B2_Menu {
     public static void main(String[] args) {
+        
         menu();
         System.out.println("To be continue....");
     }
@@ -56,6 +57,7 @@ public class B2_Menu {
         //nhập tháng => in ra số ngày trong tháng
         //áp dụng switch- case
         //xem lại điều kiện năm nhuận
+        
     }
     //nếu quan tâm:
     //nhập ngày tháng năm hiện tại

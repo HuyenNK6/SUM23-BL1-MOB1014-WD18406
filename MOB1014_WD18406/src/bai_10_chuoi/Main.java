@@ -4,12 +4,15 @@
  */
 package bai_10_chuoi;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Khanh Huyen
  */
 public class Main {
-     /*
+
+    /*
          * 1. Khai báo chuỗi
          * String s= "...";
          * 
@@ -37,11 +40,11 @@ public class Main {
             Str = Str.Replace(",","."):Thay thế dấu ',' thành dấu '.' trong chuỗi Str.
             Str = Str.Replace("xử lý","hàm chuỗi"):Thay thế chuỗi 'xử lý' thành chuỗi ''hàm chuỗi' trong chuỗi Str
             Thay thế chuỗi đầu tiên được tim thấy và tùy chỉnh số lượng thay thế của chuỗi.
-         * 10. Cắt chuỗi con
+         * 10. Cắt chuỗi con => begin - end index
             Str1 = Str.SubString(4):Tạo chuỗi con từ chuỗi Str bắt đầu từ vị trí 4 đến hết
             Str1 = Str.Substring(0,8): Cắt chuỗi từ vị trí đầu tiên(vị trí 0) đến vị trí số 8, kết quả là 'hàm xử'
          * 11. Tách chuỗi .Split (Chuyển từ chuỗi string sang mảng Array)
-            string str="các hàm xử lý chuỗi, xử lý chuỗi trong java";
+            string str="các hàm xử lý chuỗi, xử lý chuỗi , trong java";
             string[] arrListStr = str.Split(',');//tách trong chuỗi str trên khi gặp ký tự ','
             kết quả arrListStr[0]='các hàm xử lý chuỗi' và arrListStr[1]='xử lý chuỗi trong c#'
         * 12. Chuyển từ mảng Array sang chuỗi String với String.Join
@@ -89,9 +92,9 @@ public class Main {
             X?	X xảy ra một hoặc không lần	hellos?	hello, hellos, helloss
             X+	X xảy ra một hoặc nhiều lần	Version \w-\w+	Version A-b1_1
             X*	X xảy ra không hoặc nhiều lần	A*B*C*	AAACC
-            X{n}	X chỉ xảy ra n lần	\d{4}	2018, 20189, 201
-            X{n,}	X xảy ra n hoặc nhiều lần	\d{4,}	2018, 20189, 201
-            X{n,m}	X xảy ra ít nhất n lần nhưng nhỏ hơn m lần	\d{2,3}	2018, 201
+            X{n}	X chỉ xảy ra n lần	[0-9]{4}	2018, 20189, 201
+            X{n,}	X xảy ra n hoặc nhiều lần	[0-9]{4,}	2018, 20189, 201
+            X{n,m}	X xảy ra ít nhất n lần nhưng nhỏ hơn m lần	[0-9]{2,3}	2018, 201
      */
 
  /*3. Ký tự đặc biệt trong Regex
@@ -113,7 +116,67 @@ public class Main {
         \\, \., \$, \^ | đại diện "\", ".", "$", "^"
         
      */
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        
+        //xuLyChuoi();
+        String ten = kiemTraChu();
+        System.out.println("ten: " + ten);
+        int tuoi= kiemTraSo();
+        System.out.println("tuoi: "+ tuoi);
+    }
+    //chỉ cho nhập chữ -> sai thì nhập lại
+    public static String kiemTraChu() {
+        String input;
+        do {
+            System.out.println("Moi nhap chu: ");
+            input = sc.nextLine();
+        } while (!input.matches("^[a-zA-Z\\s]+$"));
+        // "^[a-zA-Z\\s]+$" <=> "^[a-zA-Z ]+$"
+        return input;
+    }
+
+    public static int kiemTraSo() {
+        String input;
+        do {
+            System.out.println("Moi nhap so: ");
+            input = sc.nextLine();
+        } while (!input.matches("^[0-9]+$"));
+        // "^[0-9]+$" <=> "^[\\d]+$"
+        return Integer.parseInt(input);
+    }
+    //kiểm tra số điện thoại: bđau = số 0 và có 10 số
+    //kiểm tra số double (vd cân nặng)
+    //kiểm tra email có đuôi là @fpt.edu.vn
+     public static void xuLyChuoi() {
+        String[] arrTen = {"Hoa", "hong", "dao", "Nhung", "ngoc"};
+        System.out.println("-------StartWith----------");
+        for (String ten : arrTen) {
+            if (ten.toUpperCase().startsWith("N")) {
+                System.out.println(ten);
+            }
+        }
+        System.out.println("-------Contain-----------");
+        for (String ten : arrTen) {
+            if (ten.contains("h")) {
+                System.out.println(ten);
+            }
+        }
+        System.out.println("-------Substring--------");
+        String monHoc = "Lap trinh Java 1";
+        String s1 = monHoc.substring(4);
+        String s2 = monHoc.substring(4, 12);
+        System.out.println(s1);
+        System.out.println(s2);
+
+        System.out.println("--------Split-----------");
+        String poly = "      FPT   Polytechnic  Ha   Noi";
+        String[] result = poly.trim().split("\\s+");
+        //  \s: đại diện cho ký tự trắng
+        //  + : xuất hiện 1 hoặc nhiều lần
+        System.out.println("result[1]= " + result[1]);
+        for (String r : result) {
+            System.out.println(r);
+        }
     }
 }

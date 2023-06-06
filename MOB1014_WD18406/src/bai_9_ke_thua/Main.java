@@ -22,5 +22,6 @@ public class Main {
         gvFpt.setNamSinh(2000);
         gvFpt.setGioiTinh(0);
         gv.inThongTin();
+       
     }
 }

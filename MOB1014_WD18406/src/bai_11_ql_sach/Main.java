@@ -49,6 +49,9 @@ public class Main {
                 case 11:
                     service.dsTheoTenGanDung();
                     break;
+                case 15:
+                    service.keThua();
+                    break;
                 case 0:
                     System.exit(0);
                     break;

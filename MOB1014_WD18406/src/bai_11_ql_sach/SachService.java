@@ -91,4 +91,19 @@ public class SachService {
         }
     }
     //14. Tìm tất cả sách có mã bắt đầu bằng SGK =>  startwith
+    public void keThua(){
+        SachGiaoKhoa sgk1= new SachGiaoKhoa();
+        sgk1.setCode("SACH09");
+        sgk1.setTen("Tieng Viet");
+        sgk1.setTheLoai("SGK");
+        sgk1.setNamXuatBan(2015);
+        sgk1.setNhaXuatBan("GD");
+        sgk1.setGia(10000);
+        sgk1.setLop(5);
+        sgk1.inThongTin();
+        
+        SachGiaoKhoa sgk2= new SachGiaoKhoa(4, "SACH10", "Toan", "SGK",
+                                        2010, "GD", 12000);
+        sgk2.inThongTin();
+    }
 }
